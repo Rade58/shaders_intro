@@ -1,0 +1,22 @@
+{
+  "name": "shaders_intro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "start": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lil-gui": "^0.19.2",
+    "three": "^0.167.1"
+  },
+  "devDependencies": {
+    "@types/three": "^0.167.2",
+    "vite": "^5.4.2"
+  }
+}

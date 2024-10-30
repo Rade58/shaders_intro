@@ -5,11 +5,12 @@
 - Vertex shader(a special program) we create, as an instruction will be sent to GPU
   Most simple thing that can be drown is a triangle
 - We send mentioned vertex shader together with data like:
-   - vertices coordinates
-   - mesh transformations
-   - cammera informations
-   - etc.
-  
+
+  - vertices coordinates
+  - mesh transformations
+  - cammera informations
+  - etc.
+
   and GPU will follow instruction (vertex shader program) and position the vertices
 
 IMORTANT: `Vertex Shader program will be run for each of the vertices`
@@ -31,12 +32,12 @@ Order is like this
 
 - We create fragment shader
 - We send shader to the GPU
-    with data: like the color
+  with data: like the color
 - GPU follows the instructions and colors the fragments
 
 ### Data available in Fragment Shader: Varying and Uniforms
 
-Same Uniforms available to Vertex shader are available to Fragment shader too 
+Same Uniforms available to Vertex shader are available to Fragment shader too
 
 There is no attributes, they are only passed to Vertex Shader but not the Fragment shader
 
@@ -46,3 +47,7 @@ What will be varying in case of single Fragment Shader execution.
 Well, as a varying, that can be interpolated color (**a mix between colors**) value of the single fragment that is somwhere "on the surface" that is formed between all of these vertices positioned earlier by the Vertex shader executions
 
 ![graph](/notes_images/Screenshot%20from%202024-10-30%2020-00-39.png)
+
+# ShaderMaterial and RawShaderMaterial
+
+First will have some code added to it automatically, second will have nothing, and we are using second one.
