@@ -34,7 +34,7 @@ Order is like this
     with data: like the color
 - GPU follows the instructions and colors the fragments
 
-## Data available in Fragment Shader: Varying and Uniforms
+### Data available in Fragment Shader: Varying and Uniforms
 
 Same Uniforms available to Vertex shader are available to Fragment shader too 
 
@@ -43,4 +43,6 @@ There is no attributes, they are only passed to Vertex Shader but not the Fragme
 **But Varyings are avaible for fragment shader, and they are passed from Vertex Shader after its execution**
 
 What will be varying in case of single Fragment Shader execution.
-Well, as a varying, that can be interpolated color value of the single fragment that is somwhere "on the surface" between all of these vertices positioned earlier by the Vertex shader executions
+Well, as a varying, that can be interpolated color (**a mix between colors**) value of the single fragment that is somwhere "on the surface" that is formed between all of these vertices positioned earlier by the Vertex shader executions
+
+![graph](/notes_images/Screenshot%20from%202024-10-30%2020-00-39.png)
