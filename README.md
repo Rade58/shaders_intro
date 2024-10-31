@@ -51,3 +51,63 @@ Well, as a varying, that can be interpolated color (**a mix between colors**) va
 # ShaderMaterial and RawShaderMaterial
 
 First will have some code added to it automatically, second will have nothing, and we are using second one.
+
+# `vite-plugin-glsl` or `vite-plugin-glslify`
+
+Second one has advantage of using import syntax in glsl
+
+Author of the workshop uses first plugin, but I like using second one
+
+vite config for first one (I manged to make it work only by using dynamic import with async function):
+
+```js
+import { defineConfig } from "vite";
+
+export default defineConfig(async () => {
+  const glsl = (await import("vite-plugin-glsl")).default;
+
+  return {
+    base: "./",
+    root: "src/",
+    publicDir: "../static/",
+    build: {
+      outDir: "../dist",
+      emptyOutDir: true,
+      sourcemap: true,
+    },
+    server: {
+      host: true,
+      open: !(
+        "SANDBOX_URL" in process.env || "CODESANDBOX_HOST" in process.env
+      ),
+    },
+    plugins: [
+      // glslify(),
+      glsl(),
+    ],
+  };
+});
+```
+
+vite config for second one, which I'll use. And as you can se we don't need to use dynamic import and async function
+
+```js
+import glslify from "vite-plugin-glslify";
+
+/** @type {import('vite').UserConfig} */
+export default {
+  base: "./",
+  root: "src/",
+  publicDir: "../static/",
+  build: {
+    outDir: "../dist",
+    emptyOutDir: true,
+    sourcemap: true,
+  },
+  server: {
+    host: true,
+    open: !("SANDBOX_URL" in process.env || "CODESANDBOX_HOST" in process.env),
+  },
+  plugins: [glslify()],
+};
+```

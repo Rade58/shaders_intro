@@ -4,8 +4,13 @@ import GUI from "lil-gui";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 
 // We are going to use          RawShaderMaterial
-// WE are going to write minimum vertex shader
-//
+
+// WE are going to write minimum vertex shader in order
+// for us to not get an error and to see our plane
+// we need minimal vertex shader, but fragment shader we will leave as blank
+// not going to provide fragment shader
+
+// at this point you will see just red color on your plane
 //
 //
 //
@@ -74,6 +79,17 @@ if (canvas) {
   //------------------------------------------------
   //------------------------------------------------
   //------------------------------------------------
+  //------------------------------------------------
+  //------------------------------------------------
+  //------------------------------------------------
+  //------------------------------------------------
+  //------------------------------------------------
+  //------------------------------------------------
+  //------------------------------------------------
+  //------------------------------------------------
+  //------------------------------------------------
+  //------------------------------------------------
+  //------------------------------------------------
 
   // ----------------------------------------------
   // ----------------------------------------------
@@ -86,19 +102,38 @@ if (canvas) {
   // const material = new THREE.MeshBasicMaterial();
   const material = new THREE.RawShaderMaterial({
     vertexShader: /*glsl*/ `
-      uniform mat4 updateProjectionMatrix;
+      uniform mat4 projectionMatrix;
+      uniform mat4 viewMatrix;
+      // It would also work without this
+      // uniform mat4 modelMatrix;
+
+      attribute vec3 position;
+
+      void main(){
+        // like I said, it would also work without modelMatrix
+        gl_Position = projectionMatrix * viewMatrix * vec4(position, 1.0);
+        // gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
+      }
     
     `,
-    fragmentShader: /*glsl*/ `
-      
-    
-    `,
+    // fragmentShader: /*glsl*/ `
+    // `,
+    // side: THREE.DoubleSide,
   });
 
   const mesh = new THREE.Mesh(geometry, material);
 
   scene.add(mesh);
 
+  // -------------------------------------------------------------
+  // -------------------------------------------------------------
+  // -------------------------------------------------------------
+  // -------------------------------------------------------------
+  // -------------------------------------------------------------
+  // -------------------------------------------------------------
+  // -------------------------------------------------------------
+  // -------------------------------------------------------------
+  // -------------------------------------------------------------
   // -------------------------------------------------------------
   // -------------------------------------------------------------
   // ------------------------- LIGHTS ----------------------------
