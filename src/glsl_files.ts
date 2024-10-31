@@ -10,6 +10,8 @@ import { OrbitControls } from "three/examples/jsm/Addons.js";
 // instead other one 'vite-plugin-glsl'
 // because with glslify we have option to import shaders into
 // shaders which is big advantage for large projects
+// just to inform you that author of the workshop
+// uses second one for this lesson. I won't
 
 import vertexShader from "./shaders/test/vertex.glsl";
 import fragmentShader from "./shaders/test/fragment.glsl";
