@@ -3,23 +3,36 @@ import * as THREE from "three";
 import GUI from "lil-gui";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 
-// Moving shaders into gls files
-//
-//
-// we are using 'vite-plugin-glslify
-// instead other one 'vite-plugin-glsl'
-// because with glslify we have option to import shaders into
-// shaders which is big advantage for large projects
-// just to inform you that author of the workshop
-// uses second one for this lesson. I won't
-
 import vertexShader from "./shaders/test/vertex.glsl";
 import fragmentShader from "./shaders/test/fragment.glsl";
+
+// GLSL language features
+// GLSL stands for OpenGL Shading Language
+// really close to C language
+
+// - prints or logs aren't possible because GPU is doing its thing
+
+// - indentation not important
+
+// - smicolon (;) is important
+
+// ------- usual variables ------------
+// -- float, int, bool --
+// - you can do mathematic operation but you can mix integers and floats in those operations
+// - we don't do a lot of mathematical operations with integers, it is almost always floats we will use
+// - we convert integers into float with `float()` function
+// like I did in test fragment shader   src/shaders/test/fragment.glsl
 //
-//
-// strings containing your glsl code will be printed
-// console.log({ vertexShader });
-// console.log({ fragmentShader });
+
+// ------- glsl variables ------------
+//  -- vec2, vec3, vec4 --
+// - I know them from beforre but fun thing is how vec2 can be building part of vec3 for example
+// and you can just provide float to complete vec3 mede from vec2 and a float
+
+//- you can multiply them by floats
+// (you can do also other mathematical operations)
+
+// ------------------------------------
 // ------------ gui -------------------
 
 //  Debug UI - lil-ui
@@ -101,17 +114,8 @@ if (canvas) {
   const material = new THREE.RawShaderMaterial({
     vertexShader,
     fragmentShader,
-    // ---- some properties of the material that still work
-    // even we are using shaders
     // wireframe: true,
     // side: THREE.DoubleSide,
-    // transparent: true,
-    // ---- this one worked but it doesn't anymore
-    // flatShading: true,
-    // there are also others that still work
-    // but these won't work:
-    // map, aphaMap, opacity, color etc. (if we won't these we must write it ourself in shader code
-    //since they are shader code under the hood of threejs after all)
   });
 
   const mesh = new THREE.Mesh(geometry, material);
