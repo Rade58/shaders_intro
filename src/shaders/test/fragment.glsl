@@ -32,6 +32,32 @@ vec2 lorem = foo.yx;
 vec3 baz = foo.rgb;
 // we can change value of the property;
 
+// ---------------- Defining a function -----------------------
+// ------------------------------------------------------------
+// I think that you need to declare them
+// before     main     in order to use them inside main 
+
+// function declaration has a type that function returns
+
+// here we defined a function that returns nothing
+// that's why it starts with    void    keyword
+void incre_by_zero_five(vec3 a){
+  a *= 0.5;
+}
+
+// this function returns vec3
+vec3 give_ve_3(){
+  return vec3(1.0, 0.4, 0.5);
+}
+
+// this function makes vec2 from its parameters
+vec2 make_ve_2(float x, float y){
+  return vec2(x,y);
+}
+
+// -------------------------------------------------------------
+// -------------------------------------------------------------
+
 
 void main() {
 
@@ -48,8 +74,22 @@ void main() {
 
   // this is how we can use vec4 parts, and vec2 parts for example,
   // to build another vec4
-  gl_FragColor = vec4(bar.g, foo.xy, 1.0);
+  // gl_FragColor = vec4(bar.g, foo.xy, 1.0);
 
   // gl_FragColor = foo;
 
+  // we called function here as you can see
+  // incre_by_zero_five(baz);
+
+  // gl_FragColor = vec4(baz, 1.0);
+
+  // using function that outputs vec2
+  // and using outputed value into this vec4
+
+  gl_FragColor = vec4(make_ve_2(0.4, 0.2), 0.5, 1.0);
+
+
+
+
 }
+

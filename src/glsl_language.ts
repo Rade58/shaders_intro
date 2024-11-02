@@ -63,6 +63,23 @@ import fragmentShader from "./shaders/test/fragment.glsl";
 // there are            mat2, mat3, mat4, sampler2D     etc.
 // but we will cover them later
 
+// ------ functions --------------
+// in     src/shaders/test/fragment.glsl   file
+// I showed you how to define functions
+// I showed you how to declare functions that return nothing (declare dwith `void`)
+// I showed you haow to declare functions that return something
+// in that case you are typing them with type of value they return
+// if a function returns vec2, you must type it as vec2
+// I also showed you how to define and type parameters of a function
+
+// There are also native functions you can use
+// I assume they are part of standard library
+
+// Some of them are    sin, cos, max, min, pow, exp, mod, clamp
+
+// also, a lot of practical ones like:
+//         cross, distance, reflect, refract, normalize
+
 // -------------------------------------------------------------
 // I pretty much tested some of the language features inside
 // src/shaders/test/fragment.glsl   file
