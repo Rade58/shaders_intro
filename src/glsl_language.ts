@@ -78,7 +78,8 @@ import fragmentShader from "./shaders/test/fragment.glsl";
 // Some of them are    sin, cos, max, min, pow, exp, mod, clamp
 
 // also, there are a lot of practical, but complex ones, like:
-//         cross, distance, reflect, refract, normalize
+//         cross, dot, distance, mix, step, smoothStep, length,
+//         reflect, refract, normalize
 
 // -------------------------------------------------------------
 // I pretty much tested some of the language features inside

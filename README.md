@@ -111,3 +111,9 @@ export default {
   plugins: [glslify()],
 };
 ```
+
+# Documentation for glsl isn't that begginer friendly
+
+- [Kronsos Group Registry](https://registry.khronos.org/): OpenGL docs but very close to the WebGL
+- [Book of Shaders glossary](https://thebookofshaders.com/glossary/): A great course about fragment shaders
+- [Shaderific](https://shaderific.com/glsl.html): docs on an iOS application to the shaders
