@@ -115,7 +115,7 @@ export default {
 # Documentation for glsl isn't that begginer friendly
 
 - [Kronsos Group Registry](https://registry.khronos.org/): OpenGL docs but very close to the WebGL
-- [Book of Shaders glossary](https://thebookofshaders.com/glossary/): A great course about fragment shaders
+- [Book of Shaders glossary](https://thebookofshaders.com/glossary/): A great course about fragment shaders (**Thi one is great because you see output, and you can tweak things to change the output**)
 - [Shaderific](https://shaderific.com/glsl.html): docs on an iOS application to the shaders
 
 It's a good way to consult these docs igf you don't know how to call native functions like:
