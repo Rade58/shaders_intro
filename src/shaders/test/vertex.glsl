@@ -1,7 +1,12 @@
 // these are matrices
-uniform mat4 projectionMatrix; // yes, `mat` means matrix here
+uniform mat4 projectionMatrix; // yes,   mat    means matrix here
 uniform mat4 viewMatrix;
 uniform mat4 modelMatrix;
+
+uniform mat4 modelViewMatrix; // this is a shorthand for
+//                             modelMatrix * viewMatrix
+//                             (I explained this bellow, 
+//                            but this changes, usage of two mentioned matrices )
 
 
 
@@ -46,23 +51,24 @@ void main(){
 
 
   // here as you see we used position attribute to build vector4
-  // we passed entire `position`; we also could have write it like
-  // `position.xyz`, which is the same as writing `position`
-  // `position.xyz` would create new instance of vec3 and we
+  // we passed entire 'position'; we also could have write it like
+  // position.xyz, which is the same as writing position
+  // position.xyz would create new instance of vec3 and we
   // passed original position vector 3 instance
-  gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
+  
+  // gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
 
   // ----------------------------------------------------------
   // ----------------------------------------------------------
   
   // each of marices we are multiplying above
   // projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0)
-  // will transform the `position`,
+  // will transform the position,
   //  until we get the final clip space coordinates for the vertices
 
   // we have 3 matrices
 
-  // - they are `uniform`s because they are the same for all the vertices
+  // - they are 'uniform's because they are the same for all the vertices
   // - each matrix will do a part of the transformation
   // - apply ing of matrix is done by multipkying
   // - matrix must have the same size as the coordinate
@@ -79,6 +85,18 @@ void main(){
   //  --  projectionMatrix --
   // transforms the coordinates into the clip space coordinates
 
+  // More about coordinates you can read here:
+  // https://learnopengl.com/Getting-started/Coordinate-Systems
+
+  // but there is a shorthand
+  // All of this:
+  //                viewMatrix * modelMatrix
+  //              
+  // can be written as      modelViewMatrix
+
+  // so this can be shorter
+
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 
 
   // ----------------------------------------------------------
