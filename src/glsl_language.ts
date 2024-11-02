@@ -26,11 +26,21 @@ import fragmentShader from "./shaders/test/fragment.glsl";
 
 // ------- glsl variables ------------
 //  -- vec2, vec3, vec4 --
-// - I know them from beforre but fun thing is how vec2 can be building part of vec3 for example
-// and you can just provide float to complete vec3 mede from vec2 and a float
+// - I know them from beforre but one of fun thing is how vec2
+// can be building part of vec3 for example
+// and you can just provide float to complete vec3 made from vec2
+// and a float
 
-//- you can multiply them by floats
+// - you can multiply them by floats
 // (you can do also other mathematical operations)
+// which means all the items of the vector will be multiplied
+// or it will be
+// this includes operations like `*=` which will change
+// original vector we are calculating with
+
+// - depending on which vector we are talking about
+//     they can have properties properties like   x y z w
+//     for example vec4 only has all   x, y, z, w
 
 // ------------------------------------
 // ------------ gui -------------------
