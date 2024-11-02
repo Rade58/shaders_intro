@@ -16,7 +16,7 @@ import fragmentShader from "./shaders/test/fragment.glsl";
 
 // - smicolon (;) is important
 
-// ------- usual variables ------------
+// ------- usual types ------------
 // -- float, int, bool --
 // - you can do mathematic operation but you can mix integers and floats in those operations
 // - we don't do a lot of mathematical operations with integers, it is almost always floats we will use
@@ -24,23 +24,49 @@ import fragmentShader from "./shaders/test/fragment.glsl";
 // like I did in test fragment shader   src/shaders/test/fragment.glsl
 //
 
-// ------- glsl variables ------------
-//  -- vec2, vec3, vec4 --
+// ------- glsl types ------------
+//  --     vec2, vec3, vec4    --
 // - I know them from beforre but one of fun thing is how vec2
-// can be building part of vec3 for example
-// and you can just provide float to complete vec3 made from vec2
-// and a float
+// can be building part of vec3 or vec4, or how can vec3 be
+// building part of vec4 for example
+//    vec2 a = vec2(1.0, 0.5);           vec3 b = vex3(a, 1.0);
 
-// - you can multiply them by floats
-// (you can do also other mathematical operations)
-// which means all the items of the vector will be multiplied
-// or it will be
+// and you can just provide floats to complete vec3 made from vec2
+// and a float. Besically to fill out the blanks
+
+// - you can multiply vectors by floats
+// (you can do also other mathematical operations on them)
+// which means all the items of the vector will be the one
+// you are doing matematical operations
 // this includes operations like `*=` which will change
 // original vector we are calculating with
 
 // - depending on which vector we are talking about
 //     they can have properties properties like   x y z w
-//     for example vec4 only has all   x, y, z, w
+//     and    r, g, b, a
+//     for example vec4  has all   x, y, z, w   and   r, g, b, a
+//     and    r == x      g == y      b == z      a == w
+//     they are like the aliases as you can see
+//     and you can already conclude what properties vec2 and vec3
+//     can have
+// - you can change value of the property also
+//   vec3 a = vec3(1.0,1.0,1.0);      a.y = 0.5;
+// but I think you can only do mentioned inside `main` only
+
+// - you can extract desired vectors from a vector
+// vec3 a = vec3(1.0, 0.5, 0.6);     vec2 b = a.xz;
+// b will be evaluated to   -   vec2(1.0, 0.6)   -
+// doing mentioned thing is called swizzle
+
+//
+// ------- more types ------------
+// there are            mat2, mat3, mat4, sampler2D     etc.
+// but we will cover them later
+
+// -------------------------------------------------------------
+// I pretty much tested some of the language features inside
+// src/shaders/test/fragment.glsl   file
+// I also left some helpful comments for you to see
 
 // ------------------------------------
 // ------------ gui -------------------
