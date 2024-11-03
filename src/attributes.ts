@@ -3,8 +3,8 @@ import * as THREE from "three";
 import GUI from "lil-gui";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 
-import vertexShader from "./shaders/test4/vertex.glsl";
-import fragmentShader from "./shaders/test4/fragment.glsl";
+import vertexShader from "./shaders/attributes/vertex.glsl";
+import fragmentShader from "./shaders/attributes/fragment.glsl";
 
 // -------------- Understanding Attributes -----------------
 // look for comments in:
@@ -12,9 +12,35 @@ import fragmentShader from "./shaders/test4/fragment.glsl";
 //                        src/shaders/attributes/fragment.glsl
 //
 
-//   importan attributes
-// - position (vector 3)
+//   importan attributes sent by geometry (by BufferGeometry (PlaneGeometry inherits from it))
+//   by default, to our vertex shader
+// ---- position (vector 3) ----
+// will have appropriate values for each vertex
+// and I'm mentioning again, since our vertex shader
+// is executed by GPU for each individual vertex
+// and different position will be passed for every execution
 
+// Other attributes you can find on your geometry instance
+// Go and print them      console.log({attributes: geometry.attributes});
+
+// I found three attributes on our geometry and those are
+//     ------  position       normal          uv
+
+//  position    (a position of the vertices)
+
+//  normal      (outside of the vertices)
+//               this is important for light among other things
+
+//  uv          about how to place texture
+
+// ------------------------------------------------------------
+// We will add our custom attribute on our PlaneGeometry instance
+// it will be called `aRandom`
+// then in vertex shader code we will add that random vlue for each of the vertices
+// but just on the z axis according to that value
+// we are doing this just as tast, a test for sake of the lesson
+
+// ------------------------------------------------------------
 // ------------------------------------
 // ------------ gui -------------------
 
@@ -93,6 +119,37 @@ if (canvas) {
 
   const geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
 
+  // adding an attribute ---------------------------------
+
+  const verticesCount = geometry.attributes.position.count;
+
+  const randoms = new Float32Array(verticesCount);
+
+  for (let i = 0; i < verticesCount; i++) {
+    randoms[i] = Math.random(); // filling it with random values
+  }
+
+  // why did we set 1 as an item size
+  // well, we need single value in a shader execution instance
+  // we don't need two or three values since we just
+  // want to access that value and use it with `modelPosition.z`
+  // we will not change y or x
+  const aRandomAttribute = new THREE.BufferAttribute(randoms, 1);
+  // we named it with a prefix `a` to mark it as an attribute
+  // this is not convention, it's not required
+  // but in shader it will be easier to know what are our custom attributes
+  // when we are accessing them in glsl
+  geometry.setAttribute("aRandom", aRandomAttribute);
+  // and if you create uniform, pefix it with an u,
+  // and if you create varying, prefix it with a v
+  //  it will be easier
+  // to find it (this is what author of the workshop tend to do)
+
+  // checking now if there is new attribute there
+  console.log({ aRandom: geometry.attributes["aRandom"] });
+
+  // -----------------------------------------------------
+
   // const material = new THREE.MeshBasicMaterial();
   const material = new THREE.RawShaderMaterial({
     vertexShader,
@@ -102,6 +159,7 @@ if (canvas) {
     // for alpha to work in your fragment shader
     transparent: true,
   });
+  // console.log({ attributes: geometry.attributes });
 
   const mesh = new THREE.Mesh(geometry, material);
 
