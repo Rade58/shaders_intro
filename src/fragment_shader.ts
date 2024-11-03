@@ -11,6 +11,18 @@ import fragmentShader from "./shaders/test4/fragment.glsl";
 //                        src/shaders/test4/fragment.glsl
 //
 
+//
+// Well just before you look into fragment shader code we can say
+// that our fragment shader program will be run for each of the fragments
+// what are fragments is determined by geometry
+// and we said in some earlier lesson that corresponding vertex shader
+// is being executed for certain vertex, and then fragment shader is being executed
+// where this fragment shader gets bunch of stuff passed from vertex shader
+// one of the things is `position` attribute which is vector 3
+
+// if you want to be able to change   alpha    in your fragment shader
+// you need to set `transparent: true`   on your raw shader material
+
 // ------------------------------------
 // ------------ gui -------------------
 
@@ -95,6 +107,8 @@ if (canvas) {
     fragmentShader,
     // wireframe: true,
     side: THREE.DoubleSide,
+    // for alpha to work in your fragment shader
+    transparent: true,
   });
 
   const mesh = new THREE.Mesh(geometry, material);
