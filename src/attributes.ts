@@ -41,6 +41,10 @@ import fragmentShader from "./shaders/attributes/fragment.glsl";
 // we are doing this just as tast, a test for sake of the lesson
 
 // ------------------------------------------------------------
+// one more thing, read a comments in: `src/shaders/attributes/fragment.glsl`
+// at the end I think I understood how color is getting interpolated
+// so that is the good comment to revisit
+
 // ------------------------------------
 // ------------ gui -------------------
 
