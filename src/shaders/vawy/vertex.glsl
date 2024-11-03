@@ -25,7 +25,7 @@ void main(){
   // that resembles vawes
   // we will use trigonometry for this
 
-  modelPosition.z += sin(modelPosition.x * 10.0) * 0.1;
+  // modelPosition.z += sin(modelPosition.x * 10.0) * 0.1;
   // because of this above aur plane will be bended
   // because we moved it's vertices
 
@@ -38,6 +38,17 @@ void main(){
   // well, in this lesson, we used trigonometry to move each of that
   // vertex
   
+  // by increasing for example, number 10.0 above, we are multipying
+  // with inside of sinus function we will get more vawes
+
+  // and by incresing multiplier of entire sinus function call
+  // we are incresing the amplitude
+
+  // try playing with those, for example, like this
+  modelPosition.z += sin(modelPosition.x * 20.0) * 0.25;
+  // and see what you'll get
+
+
 
   vec4 viewPosition = viewMatrix * modelPosition;
   vec4 projectedPosition = projectionMatrix * viewPosition;
