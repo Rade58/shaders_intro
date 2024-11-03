@@ -26,9 +26,13 @@ void main(){
   modelPosition.y += 0.3;   // yes on the screen our plane moved on y axis by value we incremented
   // this will move mesh in z position towards us (toward camera to be precise)
   modelPosition.z += 0.5;
+  // this moves vertices
+  // and depending on geometry we set
+  // plane can have as much vertices as we set them
+  // we have I think 32 * 32 vertices we can move
 
   // based on what we understand in this lesson about modelPosition
-  // let's move coordinates in next lesson by using trigonometry
+  // let's move coordinates (move vertices) in next lesson by using trigonometry
   // to get something interesting
 
 

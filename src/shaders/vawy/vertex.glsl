@@ -27,6 +27,16 @@ void main(){
 
   modelPosition.z += sin(modelPosition.x * 10.0) * 0.1;
   // because of this above aur plane will be bended
+  // because we moved it's vertices
+
+  // It's crucial to rember what we explained back earlier
+  // this program runs for each of the vertices
+
+  // our plane has 32 times 32 vertices, which will be visible
+  // if we use wireframe (we did that)
+
+  // well, in this lesson, we used trigonometry to move each of that
+  // vertex
   
 
   vec4 viewPosition = viewMatrix * modelPosition;

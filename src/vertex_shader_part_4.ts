@@ -95,7 +95,7 @@ if (canvas) {
   const material = new THREE.RawShaderMaterial({
     vertexShader,
     fragmentShader,
-    // wireframe: true,
+    wireframe: true,
     side: THREE.DoubleSide,
   });
 
