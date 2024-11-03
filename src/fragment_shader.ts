@@ -3,16 +3,14 @@ import * as THREE from "three";
 import GUI from "lil-gui";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 
-import vertexShader from "./shaders/vawy/vertex.glsl";
-import fragmentShader from "./shaders/vawy/fragment.glsl";
+import vertexShader from "./shaders/test4/vertex.glsl";
+import fragmentShader from "./shaders/test4/fragment.glsl";
 
-// -------------- Understanding vertex shader, part 4 -----------------
+// -------------- Understanding fragment shader, part 1 -----------------
 // look for comments in:
-//                        src/shaders/vawy/vertex.glsl
+//                        src/shaders/test4/fragment.glsl
 //
-// we moved some coordinates of vertices with trigonometry
-// for our mesh to look bended or vawy
-// we didn't animate anything yet
+
 // ------------------------------------
 // ------------ gui -------------------
 
@@ -95,7 +93,7 @@ if (canvas) {
   const material = new THREE.RawShaderMaterial({
     vertexShader,
     fragmentShader,
-    wireframe: true,
+    // wireframe: true,
     side: THREE.DoubleSide,
   });
 
