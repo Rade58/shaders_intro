@@ -36,12 +36,20 @@ void main(){
 
   // and these are I assume clip space coordinates we talked about in
   // previous lesson
-  vec4 projectionPosition = projectionMatrix * viewPosition;
+  vec4 projectedPosition = projectionMatrix * viewPosition;
 
   // now instead of this
   // gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
   // we can just write this
-  gl_Position = projectionPosition;
+  gl_Position = projectedPosition;
+
+
+
+  // why we did all of this?
+  // well for example, we can now change coordinates for the
+  // modelPosition
+  // I asume this would change position of our mesh
+  // let's try some of this in next lesson
 
 
 }
