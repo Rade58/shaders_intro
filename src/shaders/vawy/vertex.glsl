@@ -50,6 +50,14 @@ void main(){
 
 
 
+
+  // I guess, this above wos important part for us
+  // even if you didn't understood next things, we explained earlier
+  // but to remind you, viewPosition are coordinates for
+  // the camera, and projectionPosition are coordinates of clip space
+  // which at the end determines position of the shader
+  // on the render
+
   vec4 viewPosition = viewMatrix * modelPosition;
   vec4 projectedPosition = projectionMatrix * viewPosition;
 
