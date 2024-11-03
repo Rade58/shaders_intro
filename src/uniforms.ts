@@ -11,6 +11,28 @@ import fragmentShader from "./shaders/uniforms/fragment.glsl";
 //                        src/shaders/uniforms/vertex.glsl
 //                        src/shaders/uniforms/fragment.glsl
 //
+// Uniforms are values that are same for everty vertex
+// which means that every instance of the shader
+// being executed by gpu for some vertex will have exact same value
+
+// Uniforms are useful for:
+// - having same shader but with different results
+// - being able to tweak values
+// - animating the value
+
+// UNIFORM CAN BE USED IN BOTH VERTEX AND FRAGMENT SHADER
+// you know that attributes are only available in vertex shader,
+// and a way to pass value of the attribute to the fragment shader
+// from the vertex shader is using varying which we showed in previous lesson
+// WELL, UNIFORM IS AUTOMATICALLY PASSED TO BOTH SHADERS
+
+// ------------------------------------------------------------
+// we will pass one uniform tou our RawShaderMaterial instance
+// again, it is a good idea to prefix it with a `u`
+// and that is a convenction you should use
+// we will create uniform we will name uFrequency
+// and we will use that uniform inside vertex shader
+
 // ------------------------------------------------------------
 
 // ------------------------------------
@@ -91,9 +113,9 @@ if (canvas) {
 
   const geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
 
-  // adding an attribute ---------------------------------
+  // adding an attribute ( we did this in previous lesson)
 
-  const verticesCount = geometry.attributes.position.count;
+  /* const verticesCount = geometry.attributes.position.count;
 
   const randoms = new Float32Array(verticesCount);
 
@@ -103,7 +125,7 @@ if (canvas) {
 
   const aRandomAttribute = new THREE.BufferAttribute(randoms, 1);
 
-  geometry.setAttribute("aRandom", aRandomAttribute);
+  geometry.setAttribute("aRandom", aRandomAttribute); */
 
   // console.log({ aRandom: geometry.attributes["aRandom"] });
 
@@ -116,8 +138,29 @@ if (canvas) {
     // wireframe: true,
     side: THREE.DoubleSide,
     // for alpha to work in your fragment shader
-    transparent: true,
+    // transparent: true,
+    // here we define our uniform
+    // if type is important to you
+    // define also a type of that uniform
+    uniforms: {
+      uFrequency: {
+        value: 20,
+        // for us type is important since we want floats for the frequency
+        // value of sinus function
+        // since we didn't define value as a float 10.0 (which we clould but we choosen not to
+        // if we are passing some dynamic value from javascript
+        // it can happen that value passed could be intiger. Well
+        // setting explicit type nesures that integer would be
+        // converted into floating point)
+        // type: "float", // **OLD SYNTAX**
+        //                DOESN'T WORK ANYMORE SO FORGET WHAT I SAID
+        //                 FLOATING POINT WILL BE PASSED ANYWAY I GUESS
+      },
+    },
   });
+  // inside tick function I'm changing mentioned uniform
+  // doing this to create animation
+
   // console.log({ attributes: geometry.attributes });
 
   const mesh = new THREE.Mesh(geometry, material);
@@ -279,9 +322,14 @@ if (canvas) {
   // ---------------------------------------------------------
   // ---------------------------------------------------------
 
-  // const clock = new THREE.Clock();
+  const clock = new THREE.Clock();
 
   function tick() {
+    const elapsed = clock.elapsedTime;
+    const delta = clock.getDelta();
+
+    material.uniforms["uFrequency"].value = 10 * elapsed;
+
     // for dumping to work
     orbit_controls.update();
 

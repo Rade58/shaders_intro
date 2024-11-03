@@ -2,7 +2,10 @@ uniform mat4 projectionMatrix;
 //
 uniform mat4 viewMatrix;
 uniform mat4 modelMatrix;
-// 
+//
+// uniform we created
+uniform float uFrequency;
+// we used this 
 
 attribute vec3 position;
 
@@ -19,6 +22,11 @@ void main(){
 
   // modelPosition.z += aRandom * 0.1;
   
+  // now we will use uniform we created here as a frequency
+  modelPosition.z = sin(modelPosition.x * uFrequency) * 0.1;
+  // 0.1 is amplitude (just telling you if you forgot, we are not changing it)
+
+
 
   vec4 viewPosition = viewMatrix * modelPosition;
 
