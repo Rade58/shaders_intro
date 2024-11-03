@@ -61,6 +61,10 @@ void main(){
   // ----------------------------------------------------------
   // ----------------------------------------------------------
   
+  // mentioned matrices we declared at the start of the program
+  // are provided or passed by threejs
+  // they are threejs specific 
+
   // each of marices we are multiplying above
   // projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0)
   // will transform the position,
@@ -93,7 +97,6 @@ void main(){
   //                viewMatrix * modelMatrix
   //              
   // can be written as      modelViewMatrix
-
   // so this can be shorter
 
   gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
