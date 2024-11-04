@@ -3,30 +3,13 @@ import * as THREE from "three";
 import GUI from "lil-gui";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 
-import vertexShader from "./shaders/uniforms_part_two/vertex.glsl";
-import fragmentShader from "./shaders/uniforms_part_two/fragment.glsl";
+import vertexShader from "./shaders/uniforms_part_three/vertex.glsl";
+import fragmentShader from "./shaders/uniforms_part_three/fragment.glsl";
 
-// -------------- Understanding Uniforms part two -----------------
-// We are continuing example from previous lesson
-// we will pass Vector2 instance as a uniform instead of float
-// since we need to pass two encapsulated values
-// since we want to change x and y of our modelPosition
-// Vector2 allows us to pass two encapsulated values inside
-// one entiry which is Vector 2
-// and we also want to pass Vector2 since inside shader
-// that value will be `vec2` and we want to use that value
-// in this case
+// -------------- Understanding Uniforms part three -----------------
 
-// so first look at the material here in threejs and see
-// what unifor we passed
-
-// and then go and see what we did with passed vec2
-
-// we also passed uniform value in tick function in previous lesson
-// but we won't be doing this in here
-// since this time it is better for us to just notice
-// by which axis and in what direction we are moving
-// vertex by altering coordinates
+// We are going to use dat gui to change uniform
+// we define in previous lesson
 
 // ------------------------------------------------------------
 
@@ -117,7 +100,7 @@ if (canvas) {
 
     uniforms: {
       uFrequency: {
-        // as you can see we have passed vector this time
+        //
         value: new THREE.Vector2(10, 5),
       },
     },
