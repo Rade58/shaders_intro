@@ -20,9 +20,13 @@ import fragmentShader from "./shaders/uniforms_part_two/fragment.glsl";
 // so first look at the material here in threejs and see
 // what unifor we passed
 
-// we also passed uniform value in tick function
-
 // and then go and see what we did with passed vec2
+
+// we also passed uniform value in tick function in previous lesson
+// but we won't be doing this in here
+// since this time it is better for us to just notice
+// by which axis and in what direction we are moving
+// vertex by altering coordinates
 
 // ------------------------------------------------------------
 
