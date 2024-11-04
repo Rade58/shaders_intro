@@ -166,6 +166,9 @@ if (canvas) {
   const orbit_controls = new OrbitControls(camera, canvas);
   orbit_controls.enableDamping = true;
 
+  const axesHelper = new THREE.AxesHelper(4);
+  scene.add(axesHelper);
+
   // ----------------------------------------------
   // ----------------------------------------------
 
