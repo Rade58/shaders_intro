@@ -37,6 +37,14 @@ void main(){
   // since we are moving vertex by z axis and we are doing this
   // two times
 
+  // but this is the way to create some kind of "randomness"
+  // also it is important to notice that we are incrementing here
+
+  // it is hard to imagine, for me how would end result look
+  // but this is I guess one of the way we can create
+  // that kind of interesting look, something that would
+  // look like vawe of the liquid, or something bumpy
+
   // so here we use x value of the modelPosition, and we are using
   // x of the uFrequency vector2 uniform, and this will 
   // move modelPosition.z to some position
