@@ -1,10 +1,24 @@
 precision mediump float;
+// precision highp float;
 
 // uniform float uFrequency;
 // varying float vRandom;
 
+//  we are going to use this varying
+// we send from the vertex shader
+varying vec2 vUv;
+
+
 uniform vec3 uColor;
 
+
+
+// this is our texture, and it is special type
+// sampler2D
+uniform sampler2D uTexture;
+
+
+varying vec3 vPosition;
 
 void main() {
 
@@ -15,6 +29,11 @@ void main() {
 
   // gl_FragColor = vec4(0.6, 0.5, 0.3, 1.0);
   
-  gl_FragColor = vec4(uColor, 1.0);
+  // gl_FragColor = vec4(uColor, 1.0);
+
+
+  vec4 textureColor = texture2D(uTexture, vUv);
+
+  gl_FragColor = textureColor;
 
 }

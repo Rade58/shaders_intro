@@ -10,12 +10,20 @@ uniform float uTime;
 // 
 
 
+// we will send this attribute to fragment in varying we'll create
+attribute vec2 uv;
+//
+// this is going to be that varying
+varying vec2 vUv;
+
+
 
 attribute vec3 position;
 
 
 attribute float aRandom;
 // varying float vRandom;
+
 
 
 void main(){
@@ -42,4 +50,8 @@ void main(){
   // 
   // vRandom = aRandom;
 
+  // we are assigning to mentioned varying
+  // because we want tit to be available in
+  // corrsponding fragment shader
+  vUv = uv;
 }

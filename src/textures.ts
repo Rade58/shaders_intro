@@ -8,7 +8,21 @@ import fragmentShader from "./shaders/textures/fragment.glsl";
 
 // -------------- Applying textures-----------------
 
-//
+// we are going to pass our Texture instance as a uniform
+
+// to apply actual texture in fragment shader we need to do some things
+
+// to take pixel colors from a texture and apply them in the
+// fragment shader, we must use the `texture2D(...)` function
+// -  the first parameter is the texture
+// -  the second parameter are the coordinates of where to pick the color on
+//             that texture
+// -  it returns vec4
+
+// in this case we are also going to use attribute called uv, which
+// neds to be the second argument of texture2D function
+// but as you know, we need create varying and send mentioned
+// uv from vertex to fragment shader
 
 // ------------------------------------------------------------
 
@@ -50,6 +64,9 @@ if (canvas) {
 
   const textureLoader = new THREE.TextureLoader();
 
+  const flagTexture = textureLoader.load("textures/flag.serbia.jpg");
+
+  console.log({ flagTexture });
   // -------------------------------------------------------------------
   // -------------------------------------------------------------------
 
@@ -106,9 +123,13 @@ if (canvas) {
       uTime: {
         value: 0,
       },
-      // we added this uniform
+      //
       uColor: {
         value: new THREE.Color("crimson"),
+      },
+      // passing texture as a uniform
+      uTexture: {
+        value: flagTexture,
       },
     },
   });
@@ -191,6 +212,8 @@ if (canvas) {
   const axesHelper = new THREE.AxesHelper(4);
   // axesHelper.setColors("red", "green", "blue");
   scene.add(axesHelper);
+
+  axesHelper.visible = false;
 
   // ----------------------------------------------
   // ----------------------------------------------
