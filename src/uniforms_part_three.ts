@@ -8,8 +8,10 @@ import fragmentShader from "./shaders/uniforms_part_three/fragment.glsl";
 
 // -------------- Understanding Uniforms part three -----------------
 
-// We are going to use dat gui to change uniform
-// we define in previous lesson
+// We are going to use gui to change values of the uniform
+// uFrequency which is a Vector2 when we pass it from threejs world
+// and it is `vec2` inside shaders world
+// It's a uniform we were dealing with in previous lesson
 
 // ------------------------------------------------------------
 
@@ -95,7 +97,7 @@ if (canvas) {
   const material = new THREE.RawShaderMaterial({
     vertexShader,
     fragmentShader,
-    // wireframe: true,
+    wireframe: true,
     side: THREE.DoubleSide,
 
     uniforms: {
@@ -106,11 +108,24 @@ if (canvas) {
     },
   });
 
-  // console.log({ attributes: geometry.attributes });
-
   const mesh = new THREE.Mesh(geometry, material);
 
   scene.add(mesh);
+
+  // let's add gui
+
+  gui
+    .add(material.uniforms["uFrequency"].value, "x")
+    .name("uFrequency x")
+    .min(0)
+    .max(10)
+    .step(0.001);
+  gui
+    .add(material.uniforms["uFrequency"].value, "y")
+    .name("uFrequency y")
+    .min(0)
+    .max(5)
+    .step(0.001);
 
   // -------------------------------------------------------------
   // -------------------------------------------------------------
@@ -167,6 +182,7 @@ if (canvas) {
   orbit_controls.enableDamping = true;
 
   const axesHelper = new THREE.AxesHelper(4);
+  // axesHelper.setColors("red", "green", "blue");
   scene.add(axesHelper);
 
   // ----------------------------------------------

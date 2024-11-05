@@ -112,7 +112,8 @@ if (canvas) {
   const material = new THREE.RawShaderMaterial({
     vertexShader,
     fragmentShader,
-    // wireframe: true,
+    // using wireframe this time
+    wireframe: true,
     side: THREE.DoubleSide,
 
     uniforms: {
@@ -182,6 +183,10 @@ if (canvas) {
 
   const orbit_controls = new OrbitControls(camera, canvas);
   orbit_controls.enableDamping = true;
+
+  //
+  const axesHelper = new THREE.AxesHelper(4);
+  scene.add(axesHelper);
 
   // ----------------------------------------------
   // ----------------------------------------------

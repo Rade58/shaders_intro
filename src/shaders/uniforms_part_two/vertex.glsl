@@ -23,6 +23,7 @@ void main(){
 
   // modelPosition.z += aRandom * 0.1;
   
+  // ------------------------------------------------------------
   // now we will use uniform we created here to modify
   // frequiency in sin function
   // so if we look from a point of view of a one vertix,
@@ -50,6 +51,13 @@ void main(){
   
   // only thing we didn't change above is amplitude, whic w kept at 
   // 0.1 as you saw 
+
+  // and to better see that we are changing vertex position by over
+  // z axis, inside threejs I added axses helper and I
+  // used wireframe on the material
+
+  // ---------------------------------------------------------------
+
 
 
   vec4 viewPosition = viewMatrix * modelPosition;
